@@ -1,4 +1,4 @@
-name: flow_by_spooky_services
+name: hkjc_updater
 description: "Flow by Spooky Services"
 publish_to: 'none'
 version: 0.0.19+24
@@ -40,6 +40,7 @@ flutter:
   assets:
     - assets/images/logo.png
     - assets/images/RacingTouch.png
+    - assets/images/hkjctv.png
 
 
 flutter_icons:

@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:dynamik_theme/dynamik_theme.dart';
-import 'package:flow_by_spooky_services/pages/home.dart';
+import 'package:hkjc_updater/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:go_router/go_router.dart';
@@ -14,6 +14,7 @@ import 'package:spookyservices/theme/colors.dart' as theme;
 //     GlobalKey<ScaffoldMessengerState>();
 
 final router = GoRouter(
+  initialLocation: '/',
   routes: [
     GoRoute(
       path: '/',
