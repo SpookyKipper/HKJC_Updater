@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' hide AppBar;
 import 'package:go_router/go_router.dart';
-import 'package:ota_update/ota_update.dart';
+import 'package:ota_update_fork/ota_update_fork.dart';
 import 'package:spookyservices/widgets/widgets.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -15,10 +15,18 @@ class _UpdatePageState extends State<UpdatePage> {
   String title = "馬會App更新助手";
   OtaEvent? currentEvent;
   String? progress;
+  bool _showContent = false;
+  String? app;
 
   @override
   void initState() {
     super.initState();
+    Future.delayed(Duration(milliseconds: 200), () {
+      //delay so no transition lag
+      setState(() {
+        _showContent = true;
+      });
+    });
   }
 
   Future<void> updateApk(String url) async {
@@ -88,11 +96,27 @@ class _UpdatePageState extends State<UpdatePage> {
       "HKJCTV": "https://m.hkjc.com/tc/download-hkjctv.html",
     };
 
-    final app = GoRouter.of(
-      context,
-    ).routeInformationProvider.value.uri.queryParameters['app'];
+    if (app == null ||
+        (GoRouter.of(
+                  context,
+                ).routeInformationProvider.value.uri.queryParameters['app'] !=
+                null &&
+            GoRouter.of(context)
+                .routeInformationProvider
+                .value
+                .uri
+                .queryParameters['app']!
+                .isNotEmpty)) {
+      // refreshing state causes app to be null, so save it first
+      setState(() {
+        app = GoRouter.of(
+          context,
+        ).routeInformationProvider.value.uri.queryParameters['app'];
+      });
+    }
+
     print("App to update: $app");
-    if (app != null && app.isNotEmpty) {
+    if (app != null && app!.isNotEmpty) {
       setState(() {
         title = "更新 $app";
       });
@@ -121,7 +145,7 @@ class _UpdatePageState extends State<UpdatePage> {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text("正在下載更新"),
+                    title: Center(child: Text("正在下載更新")),
                     content: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -137,9 +161,7 @@ class _UpdatePageState extends State<UpdatePage> {
                 },
               );
 
-              updateApk(
-                request.url,
-              );
+              updateApk(request.url);
 
               return NavigationDecision.prevent;
               //
@@ -152,7 +174,9 @@ class _UpdatePageState extends State<UpdatePage> {
 
     return Scaffold(
       appBar: AppBar(title: title, backButton: context.canPop()),
-      body: WebViewWidget(controller: controller),
+      body: (_showContent
+          ? WebViewWidget(controller: controller)
+          : Center(child: CircularProgressIndicator())),
     );
   }
 }
