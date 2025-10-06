@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:spookyservices/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -16,29 +17,26 @@ class HomePage extends StatelessWidget {
           ),
           body: Column(
             children: [
-              Text("請選擇需要更新的App：", style: TextStyle(fontSize: 30)),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Text("請選擇需要更新的App：", style: TextStyle(fontSize: 30)),
+              ),
               Center(
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 25),
-                      child: Transform.scale(
-                        scale: 2,
-                        child: Button(
-                          widget: Padding(
-                            padding: const EdgeInsets.only(right: 13),
-                            child: Image.asset(
-                              "assets/images/RacingTouch.png",
-                              width: 25,
-                            ),
-                          ),
-                          text: "Racing Touch",
-                          onPressed: () {
-                            context.go('/update?app=RacingTouch');
-                          },
+                    Button(
+                      widget: Padding(
+                        padding: const EdgeInsets.only(right: 13),
+                        child: Image.asset(
+                          "assets/images/RacingTouch.png",
+                          width: 25,
                         ),
                       ),
+                      text: "Racing Touch",
+                      onPressed: () {
+                        context.push('/update?app=RacingTouch');
+                      },
                     ),
                   ],
                 ),
@@ -47,24 +45,18 @@ class HomePage extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50),
-                      child: Transform.scale(
-                        scale: 2,
-                        child: Button(
-                          widget: Padding(
-                            padding: const EdgeInsets.only(right: 13),
-                            child: Image.asset(
-                              "assets/images/hkjctv.png",
-                              width: 25,
-                            ),
-                          ),
-                          text: "HKJC TV",
-                          onPressed: () {
-                            context.go('/update?app=RacingTouch');
-                          },
+                    Button(
+                      widget: Padding(
+                        padding: const EdgeInsets.only(right: 13),
+                        child: Image.asset(
+                          "assets/images/hkjctv.png",
+                          width: 25,
                         ),
                       ),
+                      text: "HKJC TV",
+                      onPressed: () {
+                        context.push('/update?app=HKJCTV');
+                      },
                     ),
                   ],
                 ),

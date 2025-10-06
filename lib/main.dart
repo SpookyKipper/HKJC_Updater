@@ -3,9 +3,11 @@
 import 'package:dynamik_theme/dynamik_theme.dart';
 import 'package:hkjc_updater/pages/home.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:go_router/go_router.dart';
 import 'package:go_transitions/go_transitions.dart';
+import 'package:hkjc_updater/pages/update.dart';
+import 'package:hkjc_updater/pages/update_complete.dart';
+import 'package:spookyservices/spookyservices.dart';
 
 import 'package:spookyservices/theme/colors.dart' as theme;
 
@@ -19,6 +21,15 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) => HomePage(),
+    ),
+    GoRoute(
+      path: '/update',
+      builder: (context, state) => UpdatePage(),
+      pageBuilder: GoTransitions.cupertino.call,
+    ),
+    GoRoute(
+      path: '/updateComplete',
+      builder: (context, state) => UpdateCompletePage(),
       pageBuilder: GoTransitions.cupertino.call,
     ),
   ],
@@ -26,7 +37,7 @@ final router = GoRouter(
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(Phoenix(child: MyApp()));
+  runApp(MyApp());
 }
 
 bool isDarkMode(BuildContext context) {
@@ -38,6 +49,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    if (Theme.of(context).brightness == Brightness.dark) {
+      setDarkMode(true); //for spookyservices
+    } else {
+      setDarkMode(false); //for spookyservices
+    }
+
+
+
+
+
+
     return DynamikTheme(
       config: ThemeConfig(
         useMaterial3: true,
