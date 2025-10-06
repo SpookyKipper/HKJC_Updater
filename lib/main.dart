@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:dynamik_theme/dynamik_theme.dart';
+import 'package:hkjc_updater/pages/apk_install.dart';
 import 'package:hkjc_updater/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -34,6 +35,11 @@ final router = GoRouter(
     GoRoute(
       path: '/settings',
       builder: (context, state) => SettingsPage(),
+      pageBuilder: GoTransitions.cupertino.call,
+    ),
+    GoRoute(
+      path: '/apkInstall',
+      builder: (context, state) => ApkInstallPage(),
       pageBuilder: GoTransitions.cupertino.call,
     ),
   ],

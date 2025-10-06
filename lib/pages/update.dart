@@ -21,7 +21,7 @@ class _UpdatePageState extends State<UpdatePage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: 200), () {
+    Future.delayed(Duration(milliseconds: 1000), () {
       //delay so no transition lag
       setState(() {
         _showContent = true;
@@ -29,65 +29,7 @@ class _UpdatePageState extends State<UpdatePage> {
     });
   }
 
-  Future<void> updateApk(String url) async {
-    try {
-      OtaUpdate()
-          .execute(url, destinationFilename: 'hkjc_app_update.apk')
-          .listen((OtaEvent event) {
-            setState(() => currentEvent = event);
-            setState(() {
-              progress = event.value;
-            });
-            // print('Current OTA status: ${event.status} : ${event.value}');
-
-            if (event.status == OtaStatus.INSTALLING) {
-              Navigator.of(context).pop(); // Close the dialog
-              context.go('/updateComplete');
-            } else if (event.status == OtaStatus.PERMISSION_NOT_GRANTED_ERROR ||
-                event.status == OtaStatus.INTERNAL_ERROR) {
-              Navigator.of(context).pop(); // Close the dialog
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text("更新失敗"),
-                    content: Text("無法下載更新，請確保您已授予應用程式存儲權限，然後重試。"),
-                    actions: [
-                      TextButton(
-                        child: Text("確定"),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ],
-                  );
-                },
-              );
-            } else if (event.status == OtaStatus.DOWNLOAD_ERROR) {
-              Navigator.of(context).pop(); // Close the dialog
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text("更新失敗"),
-                    content: Text("無法下載更新，請檢查您的網絡連接，然後重試。"),
-                    actions: [
-                      TextButton(
-                        child: Text("確定"),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ],
-                  );
-                },
-              );
-            }
-          });
-    } catch (e) {
-      print('Failed to make OTA update. Details: $e');
-    }
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -140,31 +82,8 @@ class _UpdatePageState extends State<UpdatePage> {
           onNavigationRequest: (NavigationRequest request) {
             if (request.url.endsWith('.apk')) {
               print("Preventing ${request.url}");
-
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Center(child: Text("正在下載更新")),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CircularProgressIndicator(),
-                        SizedBox(height: 20),
-                        Text("請不要離開此頁面。", style: TextStyle(fontSize: 20)),
-                        (progress != null && progress != "0")
-                            ? Text("下載進度: ${currentEvent?.value ?? 0}%")
-                            : SizedBox(),
-                      ],
-                    ),
-                  );
-                },
-              );
-
-              updateApk(request.url);
-
+              context.go('/apkInstall?apkUrl=${request.url}');
               return NavigationDecision.prevent;
-              //
             }
             return NavigationDecision.navigate;
           },
