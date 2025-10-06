@@ -5,10 +5,9 @@ import 'package:hkjc_updater/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:go_transitions/go_transitions.dart';
+import 'package:hkjc_updater/pages/settings.dart';
 import 'package:hkjc_updater/pages/update.dart';
 import 'package:hkjc_updater/pages/update_complete.dart';
-import 'package:spookyservices/spookyservices.dart';
-
 import 'package:spookyservices/theme/colors.dart' as theme;
 
 // Define the snackbarKey for ScaffoldMessenger
@@ -32,6 +31,11 @@ final router = GoRouter(
       builder: (context, state) => UpdateCompletePage(),
       pageBuilder: GoTransitions.cupertino.call,
     ),
+    GoRoute(
+      path: '/settings',
+      builder: (context, state) => SettingsPage(),
+      pageBuilder: GoTransitions.cupertino.call,
+    ),
   ],
 );
 
@@ -50,11 +54,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    if (Theme.of(context).brightness == Brightness.dark) {
-      setDarkMode(true); //for spookyservices
-    } else {
-      setDarkMode(false); //for spookyservices
-    }
+    
 
 
 
