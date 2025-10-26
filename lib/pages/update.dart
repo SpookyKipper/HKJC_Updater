@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart' hide AppBar;
 import 'package:go_router/go_router.dart';
-import 'package:ota_update_fork/ota_update_fork.dart';
 import 'package:spookyservices/widgets/widgets.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -13,7 +12,6 @@ class UpdatePage extends StatefulWidget {
 
 class _UpdatePageState extends State<UpdatePage> {
   String title = "馬會App更新助手";
-  OtaEvent? currentEvent;
   String? progress;
   bool _showContent = false;
   String? app;
