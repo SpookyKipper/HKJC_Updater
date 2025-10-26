@@ -1,4 +1,4 @@
-# <img src="assets/images/logo.png" height="40"> HKJC Updater 香港賽馬會應用程式更新助手
+# <img src="assets/images/icon.png" height="40"> HKJC Updater 香港賽馬會應用程式更新助手
 我有長輩使用 HKJC 應用程式，而當 App 需要更新時，均為強制性更新。由於 App 不在 Google Play 商店，更新流程較為複雜，所以製作了此更新助手以簡化更新程序。
 
 ## 下載及安裝更新助手
