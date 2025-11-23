@@ -9,34 +9,34 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       body: OneUIView(
         title: Text("設定"),
-        initCollapsed: true,
-        child: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12.5),
-                child: Center(
-                  child: Text("應用程式設定", style: TextStyle(fontSize: 24)),
-                ),
+        // initCollapsed: true,
+        child: ListView(
+          children: [
+            Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                      
+                children: [
+                  Button(
+                    text: "查看授權許可 View Licenses",
+                    onPressed: () async {
+                      showLicensePage(
+                        context: context,
+                        applicationName: 'HKJC Updater',
+                        applicationVersion: "v0.0.1 (1)",
+                        applicationIcon: ConstrainedBox(
+                          constraints: BoxConstraints(maxWidth: 100),
+                          child: Image.asset("assets/images/icon.png"),
+                        ),
+                      
+                        applicationLegalese: "© Spooky Services",
+                      );
+                    },
+                  ),
+                ],
               ),
-              Button(
-                text: "查看授權許可 View Licenses",
-                onPressed: () async {
-                  showLicensePage(
-                    context: context,
-                    applicationName: 'HKJC Updater',
-                    applicationVersion: "v0.0.1 (1)",
-                    applicationIcon: ConstrainedBox(
-                      constraints: BoxConstraints(maxWidth: 100),
-                      child: Image.asset("assets/images/logo.png"),
-                    ),
-        
-                    applicationLegalese: "© Spooky Services",
-                  );
-                },
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
       builder: (context, constraints) {
         return Scaffold(
           body: OneUIView(
-            title: Text("香港賽馬會應用程式更新助手"),
+            title: Text("馬會App更新助手"),
             actions: [
               CupertinoButton(
                 padding: EdgeInsets.only(right: 10),
@@ -39,11 +39,11 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ],
-            child: Column(
+            child: ListView(
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 3.0),
-                  child: Text("請選擇需要更新的App", style: TextStyle(fontSize: 30)),
+                  child: Center(child: Text("請選擇需要更新的App", style: TextStyle(fontSize: 30))),
                 ),
                 Center(
                   child: Row(
@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
                         ),
                         text: "投注三合一",
                         onPressed: () {
-                          context.push('/update?app=3in1');
+                          context.push('/update?app=投注三合一');
                         },
                         contrast: true,
                       ),
@@ -80,7 +80,7 @@ class HomePage extends StatelessWidget {
                         ),
                         text: "馬會開户口",
                         onPressed: () {
-                          context.push('/update?app=accountopening');
+                          context.push('/update?app=馬會開户口');
                         },
                         contrast: true,
                       ),

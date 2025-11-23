@@ -20,12 +20,12 @@ class _UpdatePageState extends State<UpdatePage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: 1000), () {
-      //delay so no transition lag
-      setState(() {
-        _showContent = true;
-      });
-    });
+    // Future.delayed(Duration(milliseconds: 1000), () {
+    //   //delay so no transition lag
+    //   setState(() {
+    //     _showContent = true;
+    //   });
+    // });
   }
 
   @override
@@ -33,8 +33,8 @@ class _UpdatePageState extends State<UpdatePage> {
     const Map<String, String> appsDownloadUrl = {
       "RacingTouch": "https://m.hkjc.com/tc/download-racing-touch.html",
       "HKJCTV": "https://m.hkjc.com/tc/download-hkjctv.html",
-      "3in1": "https://m.hkjc.com/tc/download-classic-3-in-1.html",
-      "accountopening": "https://m.hkjc.com/tc/download-hkjc-account-opening.html"
+      "投注三合一": "https://m.hkjc.com/tc/download-classic-3-in-1.html",
+      "馬會開户口": "https://m.hkjc.com/tc/download-hkjc-account-opening.html"
     };
 
     if (app == null ||
@@ -91,13 +91,9 @@ class _UpdatePageState extends State<UpdatePage> {
       ..loadRequest(Uri.parse(appsDownloadUrl[app]!));
 
     return Scaffold(
-      // appBar: AppBar(title: title, backButton: context.canPop()),
+      appBar: OneUIAppBar(title: Text(title)),
       body: (true
-          ? OneUIView(
-              title: Text(title),
-              initCollapsed: true,
-              child: WebViewWidget(controller: controller),
-            )
+          ? WebViewWidget(controller: controller)
           : Center(child: CircularProgressIndicator())),
     );
   }
