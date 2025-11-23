@@ -53,6 +53,48 @@ class HomePage extends StatelessWidget {
                         widget: Padding(
                           padding: const EdgeInsets.only(right: 13),
                           child: Image.asset(
+                            "assets/images/3in1.png",
+                            width: 25,
+                          ),
+                        ),
+                        text: "投注三合一",
+                        onPressed: () {
+                          context.push('/update?app=3in1');
+                        },
+                        contrast: true,
+                      ),
+                    ],
+                  ),
+                ),
+                Center(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Button(
+                        widget: Padding(
+                          padding: const EdgeInsets.only(right: 13),
+                          child: Image.asset(
+                            "assets/images/accountopening.png",
+                            width: 25,
+                          ),
+                        ),
+                        text: "馬會開户口",
+                        onPressed: () {
+                          context.push('/update?app=accountopening');
+                        },
+                        contrast: true,
+                      ),
+                    ],
+                  ),
+                ),
+                Center(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Button(
+                        widget: Padding(
+                          padding: const EdgeInsets.only(right: 13),
+                          child: Image.asset(
                             "assets/images/RacingTouch.png",
                             width: 25,
                           ),
@@ -87,6 +129,7 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
+                
               ],
             ),
           ),
