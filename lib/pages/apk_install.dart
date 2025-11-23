@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide AppBar;
 import 'package:go_router/go_router.dart';
+import 'package:one_ui/one_ui.dart';
 import 'package:ota_update_fork/ota_update_fork.dart';
 import 'package:spookyservices/widgets/widgets.dart';
 
@@ -80,7 +81,7 @@ class _ApkInstallPageState extends State<ApkInstallPage> {
     }
 
     return Scaffold(
-      appBar: AppBar(title: "香港賽馬會應用程式更新助手", backButton: context.canPop()),
+      appBar: OneUIAppBar(title: Text("香港賽馬會應用程式更新助手")),
       body: Center(child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

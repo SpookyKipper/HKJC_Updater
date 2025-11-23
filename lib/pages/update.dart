@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide AppBar;
 import 'package:go_router/go_router.dart';
+import 'package:one_ui/one_ui.dart';
 import 'package:spookyservices/widgets/widgets.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -27,13 +28,13 @@ class _UpdatePageState extends State<UpdatePage> {
     });
   }
 
- 
-
   @override
   Widget build(BuildContext context) {
     const Map<String, String> appsDownloadUrl = {
       "RacingTouch": "https://m.hkjc.com/tc/download-racing-touch.html",
       "HKJCTV": "https://m.hkjc.com/tc/download-hkjctv.html",
+      "3in1": "https://m.hkjc.com/tc/download-classic-3-in-1.html",
+      "accountopening": "https://m.hkjc.com/tc/download-hkjc-account-opening.html"
     };
 
     if (app == null ||
@@ -90,9 +91,13 @@ class _UpdatePageState extends State<UpdatePage> {
       ..loadRequest(Uri.parse(appsDownloadUrl[app]!));
 
     return Scaffold(
-      appBar: AppBar(title: title, backButton: context.canPop()),
-      body: (_showContent
-          ? WebViewWidget(controller: controller)
+      // appBar: AppBar(title: title, backButton: context.canPop()),
+      body: (true
+          ? OneUIView(
+              title: Text(title),
+              initCollapsed: true,
+              child: WebViewWidget(controller: controller),
+            )
           : Center(child: CircularProgressIndicator())),
     );
   }

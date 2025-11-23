@@ -58,14 +58,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    
-
-
-
-
-
-
     return DynamikTheme(
       config: ThemeConfig(
         useMaterial3: true,
