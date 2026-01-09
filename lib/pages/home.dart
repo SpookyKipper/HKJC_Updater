@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
           body: ListView(
             physics: const ClampingScrollPhysics(),
             children: [
-              const SizedBox(height: 20),
+              // const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.only(top: 3.0),
                 child: Center(
