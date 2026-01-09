@@ -81,7 +81,7 @@ class _ApkInstallPageState extends State<ApkInstallPage> {
     }
 
     return Scaffold(
-      appBar: OneUIAppBar(title: Text("香港賽馬會應用程式更新助手")),
+      // appBar: OneUIAppBar(title: Text("香港賽馬會應用程式更新助手")),
       body: Center(child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -89,7 +89,7 @@ class _ApkInstallPageState extends State<ApkInstallPage> {
           SizedBox(height: 20),
           CircularProgressIndicator(),
           SizedBox(height: 20),
-          Text("請不要離開此頁面。", style: TextStyle(fontSize: 20)),
+          Text("請不要離開此頁面", style: TextStyle(fontSize: 20)),
           (currentEvent?.value != null && currentEvent?.value != "0")
               ? Text("下載進度: ${currentEvent?.value ?? 0}%")
               : SizedBox()
