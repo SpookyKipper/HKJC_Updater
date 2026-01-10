@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart' hide AppBar;
-import 'package:go_router/go_router.dart';
-import 'package:one_ui/one_ui.dart';
 import 'package:spookyservices/widgets/widgets.dart';
 
 class SettingsPage extends StatelessWidget {

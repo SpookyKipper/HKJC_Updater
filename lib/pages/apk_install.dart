@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart' hide AppBar;
 import 'package:go_router/go_router.dart';
-import 'package:one_ui/one_ui.dart';
 import 'package:ota_update_fork/ota_update_fork.dart';
 import 'package:spookyservices/widgets/widgets.dart';
 
