@@ -20,7 +20,10 @@ final Map<String, ShellConfig> routeConfig = {
     title: "馬會App更新助手",
     icon: Icons.home,
     actions: [
-      ShellAction(icon: Icons.settings, onPressed: (context) => context.push('/settings')),
+      ShellAction(
+        icon: Icons.settings,
+        onPressed: (context) => context.push('/settings'),
+      ),
     ],
   ),
   '/updateComplete': ShellConfig(
@@ -38,10 +41,7 @@ final Map<String, ShellConfig> routeConfig = {
     icon: Icons.system_update,
     isLocked: true, // Specific Webview Logic
   ),
-  '/settings': ShellConfig(
-    title: "設定",
-    icon: Icons.settings,
-  ),
+  '/settings': ShellConfig(title: "設定", icon: Icons.settings),
 };
 
 final router = GoRouter(
@@ -52,27 +52,36 @@ final router = GoRouter(
         return AppShell(
           state: state,
           routeConfig: routeConfig, // <--- Injecting the config
-          child: child, 
+          child: child,
         );
       },
       routes: [
-        GoRoute(path: '/', builder: (context, state) => HomePage()),
+        GoRoute(
+          path: '/',
+          pageBuilder: (context, state) => buildPageWithTransition(
+            context: context,
+            state: state,
+            routeConfig: routeConfig,
+            child: HomePage(),
+          ),
+        ),
         GoRoute(
           path: '/update',
           pageBuilder: (context, state) => buildPageWithTransition(
-            context: context, 
-            state: state, 
+            context: context,
+            state: state,
             routeConfig: routeConfig,
             child: UpdatePage(),
           ),
-          
+
           // pageBuilder: GoTransitions.cupertino.call,
         ),
+
         GoRoute(
           path: '/updateComplete',
           pageBuilder: (context, state) => buildPageWithTransition(
-            context: context, 
-            state: state, 
+            context: context,
+            state: state,
             routeConfig: routeConfig,
             child: UpdateCompletePage(),
           ),
@@ -81,8 +90,8 @@ final router = GoRouter(
         GoRoute(
           path: '/settings',
           pageBuilder: (context, state) => buildPageWithTransition(
-            context: context, 
-            state: state, 
+            context: context,
+            state: state,
             routeConfig: routeConfig,
             child: SettingsPage(),
           ),
@@ -91,8 +100,8 @@ final router = GoRouter(
         GoRoute(
           path: '/apkInstall',
           pageBuilder: (context, state) => buildPageWithTransition(
-            context: context, 
-            state: state, 
+            context: context,
+            state: state,
             routeConfig: routeConfig,
             child: ApkInstallPage(),
           ),
@@ -139,9 +148,9 @@ class MyApp extends StatelessWidget {
                 // Set the predictive back transitions for Android.
                 TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
                 TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
-                TargetPlatform.linux: ZoomPageTransitionsBuilder(),
-                TargetPlatform.fuchsia: ZoomPageTransitionsBuilder(),
-                TargetPlatform.macOS: ZoomPageTransitionsBuilder(),
+                TargetPlatform.linux: FadeUpwardsPageTransitionsBuilder(),
+                TargetPlatform.fuchsia: FadeUpwardsPageTransitionsBuilder(),
+                TargetPlatform.macOS: FadeUpwardsPageTransitionsBuilder(),
               },
             ),
           );
