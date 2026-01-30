@@ -1,9 +1,9 @@
 # <img src="assets/images/icon.png" height="40"> HKJC Updater 香港賽馬會應用程式更新助手
-我有長輩使用 HKJC 應用程式，而當 App 需要更新時，均為強制性更新。由於 App 不在 Google Play 商店，更新流程較為複雜，所以製作了此更新助手以簡化更新程序。
+當 香港賽馬會 App 需要更新時，均為強制性更新。由於 App 不在 Google Play 商店，更新流程較為複雜，所以製作了此更新助手以簡化更新程序。
 
 ## 下載及安裝更新助手
 ### 方法一： F-Droid
-可於此 F-Droid 軟體庫取得程式: https://fdroid.spookysrv.com/fdroid/repo/<br>
+可於此 F-Droid 軟體庫取得程式: https://repo.spookysrv.com/fdroid/repo/<br>
 本更新助手的後續更新可於 F-Droid Client 輕易取得。<br>
 註：此並非 F-Droid 官方軟體庫，「Anti-Features」可能會於官方解釋有差別，敬請見諒。
 ### 方法二： APK Sideload
