@@ -20,11 +20,8 @@ class HomePage extends StatelessWidget {
             physics: const ClampingScrollPhysics(),
             children: [
               // const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(top: 3.0),
-                child: Center(
-                  child: Text("請選擇需要下載或更新的App", style: TextStyle(fontSize: 30)),
-                ),
+              Center(
+                child: Text("請選擇需要下載或更新的App", style: TextStyle(fontSize: 30)),
               ),
               Center(
                 child: Row(
